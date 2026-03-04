@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: mhd-toolkit
+message: If you use this toolkit, please cite the software and linked preprints.
+type: software
+authors:
+  - family-names: Reid
+    given-names: Steven
+repository-code: https://github.com/RRG314/MHD-toolkit
+license: MIT
+version: 0.1.0
+references:
+  - type: article
+    title: Topological Adam An Energy-Stabilized Optimizer Inspired by Magnetohydrodynamic Coupling
+    authors:
+      - family-names: Reid
+        given-names: Steven
+    year: 2025
+    doi: 10.5281/zenodo.17460708
+  - type: manuscript
+    title: A Unified Closure Framework for Euler Potentials in Resistive MHD
+    authors:
+      - family-names: Reid
+        given-names: Steven
+    year: 2025

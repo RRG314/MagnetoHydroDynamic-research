@@ -38,6 +38,7 @@
   - Orszag-Tang (2D)
   - Reconnection toy (2D)
 - CLI with command families: `run`, `compare`, `divfree`, `opt`
+- Topological Adam residual optimization module (experimental)
 
 ## Roadmap Snapshot
 
@@ -93,3 +94,14 @@ python -m mhd_toolkit opt residual-demo
 ```
 
 All commands save JSON outputs under `results/` by default.
+
+## Core Docs
+
+- [User Guide](user_guide.md)
+- [Tool Reference](tool_reference.md)
+- [CLI Reference](cli_reference.md)
+- [Divergence Control](divergence_control.md)
+- [Closure Sandbox](closure_sandbox.md)
+- [Diagnostics and Verification](diagnostics_and_verification.md)
+- [Topological Adam Branch Audit](topological_adam_branch_audit.md)
+- [Paper References](paper_references.md)
