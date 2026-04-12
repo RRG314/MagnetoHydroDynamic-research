@@ -1,10 +1,21 @@
 # MagnetoHydroDynamic Research
 
+[![Release](https://img.shields.io/github/v/release/RRG314/MagnetoHydroDynamic-research?display_name=tag)](https://github.com/RRG314/MagnetoHydroDynamic-research/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/RRG314/MagnetoHydroDynamic-research/blob/main/LICENSE)
+[![Evidence](https://img.shields.io/badge/Evidence-Theorem%20%7C%20Symbolic%20%7C%20Numerical-0f8f82)](https://github.com/RRG314/MagnetoHydroDynamic-research/blob/main/STATUS.md)
+[![Docs](https://img.shields.io/badge/Docs-Start%20Here%20%7C%20Proof%20Status-1f6feb)](https://github.com/RRG314/MagnetoHydroDynamic-research/blob/main/docs/overview/start-here.md)
+
 A research-oriented MHD repository that combines:
 - a practical Python toolkit for closures, diagnostics, divergence control, and residual experiments
 - a symbolic closure program centered on Euler-potential exactness and non-closure results
 
 The GitHub repository now presents the project as **MagnetoHydroDynamic Research**. The installable Python package name remains `mhd_toolkit` / `mhd-toolkit`.
+
+## Current Release
+
+- Release notes: [docs/releases/v1.0.0.md](docs/releases/v1.0.0.md)
+- Changelog: [CHANGELOG.md](CHANGELOG.md)
+- Start here: [docs/overview/start-here.md](docs/overview/start-here.md)
 
 This repository's core identity is now:
 - **theory / closure research first**

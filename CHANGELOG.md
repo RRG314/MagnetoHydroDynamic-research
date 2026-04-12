@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.0.0
+
+- Reframed the repository as a theory-first research program under the MagnetoHydroDynamic Research identity.
+- Added canonical overview, proof-status, derivation, and strongest-results documents.
+- Added a reusable symbolic closure module and research CLI path.
+- Promoted the strongest exact-family and obstruction results into the main documentation path.
+- Added reproducible symbolic validation scripts and generated reports.
+- Kept the Topological Adam connection visible, but clearly secondary to the closure theory program.
+
 ## Unreleased
 - Added `docs/april_2026_discovery_update.md` to capture the latest symbolic closure and optimizer-facing research update.
 - Added `examples/mhd_novel_experiments.py` so the April 2026 symbolic closure work lives in the toolkit as a runnable research example.
