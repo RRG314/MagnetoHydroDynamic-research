@@ -1,8 +1,10 @@
-# MHD Toolkit
+# MagnetoHydroDynamic Research
 
 A research-oriented MHD repository that combines:
 - a practical Python toolkit for closures, diagnostics, divergence control, and residual experiments
 - a symbolic closure program centered on Euler-potential exactness and non-closure results
+
+The GitHub repository now presents the project as **MagnetoHydroDynamic Research**. The installable Python package name remains `mhd_toolkit` / `mhd-toolkit`.
 
 This repository's core identity is now:
 - **theory / closure research first**

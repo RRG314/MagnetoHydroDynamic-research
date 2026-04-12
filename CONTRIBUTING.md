@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for contributing to `mhd-toolkit`.
+Thanks for contributing to `MagnetoHydroDynamic-research`.
 
 ## Development Setup
 
