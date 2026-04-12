@@ -38,6 +38,14 @@ Compare multiple closures on one problem.
 mhd compare closures --problem brio-wu --closures ideal,resistive,viscous
 ```
 
+## `research symbolic-checks`
+
+Write the canonical symbolic closure report used by the research-program layer.
+
+```bash
+mhd research symbolic-checks --output data/generated/validation/symbolic_closure_report.json
+```
+
 ## `divfree demo`
 
 Compare divergence cleaning methods from a shared perturbed B-field baseline.

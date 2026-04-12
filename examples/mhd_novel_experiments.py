@@ -1,6 +1,11 @@
 """
 Comprehensive Euler Potential Closure Experiments for Resistive MHD
 Novel territory: Toroidal coordinates, non-bilinear potentials, variable resistivity
+
+This file is kept as the original broad experiment script.
+For the canonical symbolic report and regression-style checks, use:
+- mhd_toolkit/research/symbolic_closures.py
+- scripts/validate/run_research_checks.py
 """
 
 import sympy as sp
@@ -653,4 +658,3 @@ else:
     print("   - This opens NEW research direction")
 
 print("\n" + "="*80)
-

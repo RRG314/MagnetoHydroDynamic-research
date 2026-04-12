@@ -15,6 +15,7 @@ from .divfree.metrics import div_metrics
 from .divfree.projection import clean_B_projection
 from .equations.mhd_ideal import BX, BY
 from .opt.residual import residual_demo
+from .research import write_symbolic_report
 from .solvers.fv1d import FV1DSolver
 from .solvers.fv2d import FV2DSolver
 from .tests.problems import brio_wu, orszag_tang, reconnection_toy
@@ -293,6 +294,16 @@ def run_opt_demo(args: argparse.Namespace) -> int:
     return 0
 
 
+def run_symbolic_checks(args: argparse.Namespace) -> int:
+    out_path = Path(args.output)
+    try:
+        write_symbolic_report(out_path, max_power=args.max_power)
+    except ImportError as exc:
+        raise SystemExit(str(exc))
+    print(f"Saved {out_path}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="mhd", description="mhd-toolkit CLI")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -355,6 +366,13 @@ def build_parser() -> argparse.ArgumentParser:
     residual.add_argument("--steps", type=int, default=300)
     residual.add_argument("--output-dir", default="results")
     residual.set_defaults(func=run_opt_demo)
+
+    research = sub.add_parser("research", help="Research-program utilities")
+    research_sub = research.add_subparsers(dest="research_command", required=True)
+    symbolic = research_sub.add_parser("symbolic-checks", help="Write the symbolic closure status report")
+    symbolic.add_argument("--max-power", type=int, default=6)
+    symbolic.add_argument("--output", default="data/generated/validation/symbolic_closure_report.json")
+    symbolic.set_defaults(func=run_symbolic_checks)
 
     return parser
 

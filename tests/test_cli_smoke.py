@@ -64,3 +64,6 @@ def test_cli_smoke_compare_and_opt(tmp_path) -> None:
 
     p3 = run_cmd(["opt", "residual-demo", "--steps", "40", "--output-dir", str(tmp_path)])
     assert p3.returncode == 0, p3.stderr
+
+    p4 = run_cmd(["research", "symbolic-checks", "--output", str(tmp_path / "symbolic_report.json")])
+    assert p4.returncode == 0, p4.stderr

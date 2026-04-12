@@ -1,6 +1,11 @@
 # April 2026 Discovery Update
 
-This note records the new MHD-facing results and related optimizer observations added from the April 2026 discovery pass.
+This note records the original April 2026 discovery pass.
+
+For the current canonical presentation of those results, use:
+- `docs/discoveries/non_bilinear_exact_families.md`
+- `docs/discoveries/variable_resistivity_obstructions.md`
+- `docs/theorems/proof_status.md`
 
 ## What Was Added
 
@@ -10,7 +15,7 @@ This note records the new MHD-facing results and related optimizer observations 
 
 ## MHD Closure Findings Added Here
 
-The symbolic experiment script now captures two concrete closure results that matter for the toolkit's research direction.
+The symbolic experiment script captured two concrete closure directions that mattered for the toolkit's research direction. The current repo now refines those into broader exact-family and obstruction statements.
 
 ### 1. New exactly-closed non-bilinear family
 

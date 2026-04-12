@@ -106,3 +106,15 @@ This file explains what each toolkit module is for.
   - CLI wrapper for residual optimization demo
 - `examples/mhd_novel_experiments.py`
   - symbolic closure-discovery experiment imported from the April 2026 research pass
+
+### `mhd_toolkit/research/`
+
+- `symbolic_closures.py`
+  - canonical symbolic closure identities, obstruction formulas, and report generation
+
+### `scripts/validate/`
+
+- `run_research_checks.py`
+  - writes the canonical symbolic closure report JSON
+- `run_all.sh`
+  - runs the repo tests plus the symbolic report path

@@ -1,4 +1,4 @@
-"""mhd-toolkit: practical MHD utilities for divergence control, closures, and diagnostics."""
+"""mhd-toolkit: practical MHD utilities and closure-research helpers."""
 
 from .config import SolverConfig
 from .solvers.fv1d import FV1DSolver

@@ -55,12 +55,13 @@ Implemented in toolkit:
 
 ## April 2026 Update
 
-The latest discovery pass in the sibling `topological-adam` repository adds two points that matter for the toolkit's optimization story.
+The latest discovery pass in the sibling `topological-adam` repository adds several points that matter for the toolkit's optimization story.
 
 1. The coupling current `J_t` appears to track convergence strongly in the instrumented training experiment.
 2. The target-energy regulation appears exact up to floating-point precision in the reported sweep.
+3. In the updated sibling comparison, a control path with the topological correction disabled also shows strong `J_t` / loss correlation, so `J_t` should be treated as a useful monitoring signal rather than unique proof of the topological mechanism.
 
-These are still experimental findings, not production claims. But they reinforce the decision to keep Topological Adam in the toolkit as an explicitly experimental optimization path with visible field and energy diagnostics.
+These are still experimental findings, not production claims. They reinforce the decision to keep Topological Adam in the toolkit as an explicitly experimental optimization path with visible field and energy diagnostics, while avoiding stronger mechanistic claims than the current evidence supports.
 
 Immediate implication for `mhd-toolkit`:
 - future residual optimization workflows should expose `J_t`, field-energy summaries, and related stopping or monitoring signals more directly.
