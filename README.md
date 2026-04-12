@@ -93,6 +93,7 @@ python -m mhd_toolkit opt residual-demo
 ## Documentation Map
 
 - [Project Overview](docs/README.md)
+- [April 2026 Discovery Update](docs/april_2026_discovery_update.md)
 - [User Guide](docs/user_guide.md)
 - [Tool Reference](docs/tool_reference.md)
 - [CLI Reference](docs/cli_reference.md)
@@ -116,6 +117,11 @@ Topological Adam is included in the optimization module and informed by branch-l
 - Optional torch backend loader: `mhd_toolkit/opt/topological_adam_torch.py`
 
 See [docs/topological_adam_branch_audit.md](docs/topological_adam_branch_audit.md) for branch-by-branch integration notes.
+
+The April 2026 discovery pass also added a symbolic MHD experiment script and a research update note:
+
+- `examples/mhd_novel_experiments.py`
+- [docs/april_2026_discovery_update.md](docs/april_2026_discovery_update.md)
 
 ## Paper References
 

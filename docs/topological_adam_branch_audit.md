@@ -53,6 +53,18 @@ Implemented in toolkit:
 - `mhd_toolkit/opt/topological_adam_torch.py`
   - optional bridge loader to `topological-adam` torch package
 
+## April 2026 Update
+
+The latest discovery pass in the sibling `topological-adam` repository adds two points that matter for the toolkit's optimization story.
+
+1. The coupling current `J_t` appears to track convergence strongly in the instrumented training experiment.
+2. The target-energy regulation appears exact up to floating-point precision in the reported sweep.
+
+These are still experimental findings, not production claims. But they reinforce the decision to keep Topological Adam in the toolkit as an explicitly experimental optimization path with visible field and energy diagnostics.
+
+Immediate implication for `mhd-toolkit`:
+- future residual optimization workflows should expose `J_t`, field-energy summaries, and related stopping or monitoring signals more directly.
+
 ## Scope Note
 
 Topological Adam in this toolkit is for residual minimization experiments and is explicitly marked experimental.

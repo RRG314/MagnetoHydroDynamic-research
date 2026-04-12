@@ -97,6 +97,7 @@ All commands save JSON outputs under `results/` by default.
 
 ## Core Docs
 
+- [April 2026 Discovery Update](april_2026_discovery_update.md)
 - [User Guide](user_guide.md)
 - [Tool Reference](tool_reference.md)
 - [CLI Reference](cli_reference.md)

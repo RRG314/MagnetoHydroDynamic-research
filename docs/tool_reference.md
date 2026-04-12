@@ -97,3 +97,12 @@ This file explains what each toolkit module is for.
 ### `mhd_toolkit/cli.py`
 
 - Entry point for all command-line workflows.
+
+## Example Scripts
+
+- `examples/compare_closures.py`
+  - CLI wrapper for closure comparison output generation
+- `examples/residual_solve_demo.py`
+  - CLI wrapper for residual optimization demo
+- `examples/mhd_novel_experiments.py`
+  - symbolic closure-discovery experiment imported from the April 2026 research pass
