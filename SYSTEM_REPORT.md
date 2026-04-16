@@ -7,6 +7,7 @@
 - `docs/derivations/cylindrical_exact_families.md`: constant-resistivity derivation lane
 - `docs/discoveries/variable_resistivity_obstructions.md`: obstruction layer
 - `docs/discoveries/annular_variable_resistivity_exact_families.md`: restricted positive variable-eta lane
+- `docs/discoveries/separable_variable_resistivity_extensions.md`: broader separable-family extension and failure lane
 - `docs/discoveries/smooth_axis_variable_resistivity_no_go.md`: smooth-axis no-go on the supported radial families
 
 ## Validation Path

@@ -12,6 +12,8 @@
 - variable `eta(r)` generically breaks the smooth exact radial families above
 - nonconstant `eta(r)` admits only annular/singular exact survivors `f(r)=a*sqrt(r)+b` in the `beta=r*theta` family
 - nonconstant `eta(r)` admits only annular/singular exact survivors `f(r)=a*log(r)+b` in the `beta=z` family
+- the same logarithmic annular survivor extends to the broader separable family `alpha=f(r), beta=g(z)`
+- the extension `alpha=f(r), beta=r*theta*g(z)` has no nontrivial exact survivors unless `g` is constant
 - nonconstant `eta(r)` leaves only trivial constant survivors in the `alpha=r*theta, beta=g(z)` family
 - on the supported radial families, nonconstant `eta(r)` leaves no nonconstant smooth exact survivors on axis-touching domains
 - the earlier cylindrical bilinear case `alpha = r*theta`, `beta = r*z` becomes non-exact for `eta = eta(r)`

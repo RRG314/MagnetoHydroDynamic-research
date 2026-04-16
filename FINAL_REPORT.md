@@ -16,6 +16,8 @@ A theorem-first MHD closure research repository centered on Euler-potential exac
 ### Newly sharpened in this pass
 - for nonconstant `eta(r)`, the radial-`r*theta` family is exact only if `2 r f'' + f' = 0`, giving the annular exact family `f(r)=a*sqrt(r)+b`
 - for nonconstant `eta(r)`, the radial-`z` family is exact only if `r f'' + f' = 0`, giving the annular exact family `f(r)=a*log(r)+b`
+- the same logarithmic annular survivor extends from `beta=z` to the broader separable family `beta=g(z)`
+- the tempting separable extension `beta=r*theta*g(z)` has no nontrivial exact survivors unless `g` is constant, reducing it back to the original `beta=r*theta` family
 - for nonconstant `eta(r)`, `alpha=r*theta, beta=g(z)` has only trivial constant-`g` survivors when `eta'(r)` is nonzero on an interval
 - for the supported radial families on axis-touching domains, the same ODE classification leaves only trivial constants as smooth exact survivors
 

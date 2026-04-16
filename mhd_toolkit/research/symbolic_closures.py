@@ -149,6 +149,46 @@ def solve_variable_eta_radial_z_family():
     }
 
 
+def solve_variable_eta_radial_gz_family():
+    sp, r, theta, z, eta = cylindrical_symbols()
+    f = sp.Function("f")
+    g = sp.Function("g")
+    eta_r = sp.Function("eta")(r)
+    residual = sp.simplify(variable_eta_residual(f(r), g(z), eta_r))
+    ode = sp.Eq(r * sp.diff(f(r), r, 2) + sp.diff(f(r), r), 0)
+    general_solution = sp.Eq(f(r), sp.Symbol("a", real=True) * sp.log(r) + sp.Symbol("b", real=True))
+    return {
+        "family": "alpha=f(r), beta=g(z)",
+        "residual": residual,
+        "exactness_note": (
+            "If eta'(r) is nonzero on an interval and g'(z) is not identically zero, "
+            "exactness requires r*f''(r) + f'(r) = 0."
+        ),
+        "general_solution_on_annulus": general_solution,
+        "regularity_note": (
+            "The nonconstant log(r) branch is annular/singular. On axis-touching smooth domains, "
+            "only the trivial constant radial factor survives."
+        ),
+    }
+
+
+def solve_variable_eta_radial_rtheta_gz_family():
+    sp, r, theta, z, eta = cylindrical_symbols()
+    f = sp.Function("f")
+    g = sp.Function("g")
+    eta_r = sp.Function("eta")(r)
+    residual = sp.simplify(variable_eta_residual(f(r), r * theta * g(z), eta_r))
+    return {
+        "family": "alpha=f(r), beta=r*theta*g(z)",
+        "residual": residual,
+        "exactness_note": (
+            "If g'(z) is not identically zero, the e_r residual forces f'(r)=0. "
+            "Then alpha is constant and the magnetic field is trivial. "
+            "So the only nontrivial exact survivors are the g(z)=const reductions of the beta=r*theta family."
+        ),
+    }
+
+
 def solve_variable_eta_rtheta_gz_family():
     sp, r, theta, z, eta = cylindrical_symbols()
     g = sp.Function("g")
@@ -211,8 +251,13 @@ def build_variable_eta_classification_report() -> dict[str, Any]:
                 "residual": str(solve_variable_eta_radial_z_family()["residual"].T),
                 "solution": "f(r) = a*log(r) + b",
             },
+            "alpha=f(r), beta=g(z)": {
+                "residual": str(solve_variable_eta_radial_gz_family()["residual"].T),
+                "solution": "f(r) = a*log(r) + b",
+            },
         },
         "trivial_only_family": solve_variable_eta_rtheta_gz_family()["exactness_note"],
+        "nontrivial_extension_failure": solve_variable_eta_radial_rtheta_gz_family()["exactness_note"],
         "axis_touching_smooth_no_go": build_axis_touching_smooth_no_go_report(),
         "scope_note": (
             "These positive variable-resistivity survivors are annular-domain families. "

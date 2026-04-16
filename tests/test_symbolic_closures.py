@@ -10,6 +10,8 @@ from mhd_toolkit.research.symbolic_closures import (
     build_variable_eta_classification_report,
     constant_eta_residual,
     first_order_eta_perturbation_residual,
+    solve_variable_eta_radial_gz_family,
+    solve_variable_eta_radial_rtheta_gz_family,
     solve_variable_eta_radial_rtheta_family,
     solve_variable_eta_radial_z_family,
     variable_eta_residual,
@@ -95,3 +97,23 @@ def test_axis_touching_smooth_no_go_report_keeps_only_constants() -> None:
     report = build_axis_touching_smooth_no_go_report()
     assert report["families"]["alpha=f(r), beta=r*theta"]["smooth_axis_touching_survivors"] == "f(r) = b only"
     assert report["families"]["alpha=f(r), beta=z"]["smooth_axis_touching_survivors"] == "f(r) = b only"
+
+
+def test_variable_eta_extends_log_family_to_general_g_of_z() -> None:
+    r, theta, z = sp.symbols("r theta z", real=True, positive=True)
+    eta_r = sp.Function("eta")(r)
+    g = sp.Function("g")
+    residual = variable_eta_residual(sp.log(r), g(z), eta_r)
+    assert sp.simplify(residual) == sp.zeros(3, 1)
+    summary = solve_variable_eta_radial_gz_family()
+    assert "log(r)" in str(summary["general_solution_on_annulus"])
+
+
+def test_variable_eta_blocks_nontrivial_rtheta_gz_extension() -> None:
+    summary = solve_variable_eta_radial_rtheta_gz_family()
+    assert "only nontrivial exact survivors are the g(z)=const reductions" in summary["exactness_note"]
+
+
+def test_variable_eta_classification_report_records_general_gz_family() -> None:
+    report = build_variable_eta_classification_report()
+    assert report["annular_exact_families"]["alpha=f(r), beta=g(z)"]["solution"] == "f(r) = a*log(r) + b"

@@ -51,6 +51,29 @@ $$
 
 Again, this is annular/singular rather than smooth on axis-touching domains.
 
+### Family 2b
+The same logarithmic survivor extends to the broader separable family `alpha=f(r)`, `beta=g(z)`.
+
+In that case the residual is
+
+$$
+R = \frac{2(r f''(r) + f'(r))\,\eta'(r)\,g'(z)}{r}\,e_\theta.
+$$
+
+So whenever `eta'(r)` is nonzero on an interval and `g'(z)` is not identically zero, exactness still requires
+
+$$
+r f''(r) + f'(r) = 0,
+$$
+
+and therefore
+
+$$
+f(r)=a\log r + b.
+$$
+
+This is a genuine enlargement of the annular exact-survivor lane beyond the special case `beta=z`.
+
 ### Family 3
 For `alpha=r*theta`, `beta=g(z)`, the residual carries both `g'(z)` and `g''(z)` terms multiplied by `eta'(r)`. If `eta'(r)` is nonzero on an interval, exactness forces only trivial constant `g`.
 
