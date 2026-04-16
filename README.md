@@ -56,6 +56,18 @@ For nonconstant `eta(r)`, the broad smooth exact families above are generically 
 
 That makes variable resistivity the main mathematical boundary in the current program.
 
+### Sharpened boundary under variable resistivity
+
+The obstruction result is now sharper than “everything breaks.”
+
+For nonconstant `eta(r)`:
+
+- `alpha = f(r)`, `beta = r*theta` stays exact only on the annular/singular family `f(r) = a*sqrt(r) + b`
+- `alpha = f(r)`, `beta = z` stays exact only on the annular/singular family `f(r) = a*log(r) + b`
+- `alpha = r*theta`, `beta = g(z)` has only trivial constant-`g` survivors when `eta'(r)` is nonzero on an interval
+
+These are kept as restricted positive results on annular domains and **not** promoted as smooth axis-touching exact families.
+
 ## Exact vs Symbolic vs Numerical vs Experimental
 
 - Theorem / derivation-level:
@@ -110,6 +122,7 @@ python -m mhd_toolkit opt residual-demo --steps 80
 - [FILE_INDEX.md](FILE_INDEX.md): important files and what they do
 - [docs/discoveries/non_bilinear_exact_families.md](docs/discoveries/non_bilinear_exact_families.md)
 - [docs/discoveries/variable_resistivity_obstructions.md](docs/discoveries/variable_resistivity_obstructions.md)
+- [docs/discoveries/annular_variable_resistivity_exact_families.md](docs/discoveries/annular_variable_resistivity_exact_families.md)
 - [docs/discoveries/topological_adam_bridge.md](docs/discoveries/topological_adam_bridge.md)
 - [papers/drafts](papers/drafts): current draft PDFs
 
@@ -117,6 +130,14 @@ python -m mhd_toolkit opt residual-demo --steps 80
 
 This repository is the theory and closure source layer.
 The sibling repository [RRG314/topological-adam](https://github.com/RRG314/topological-adam) is the applied optimizer branch.
+
+## Research Program Layer
+
+- [FINAL_REPORT.md](FINAL_REPORT.md)
+- [SYSTEM_REPORT.md](SYSTEM_REPORT.md)
+- [docs/research-program/branch-audit.md](docs/research-program/branch-audit.md)
+- [docs/research-program/open-problem-program.md](docs/research-program/open-problem-program.md)
+- [docs/research-program/novelty-assessment.md](docs/research-program/novelty-assessment.md)
 
 That relationship matters, but it is intentionally secondary here.
 

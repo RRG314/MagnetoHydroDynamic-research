@@ -10,6 +10,9 @@
 ## Symbolically Verified Obstructions
 
 - variable `eta(r)` generically breaks the smooth exact radial families above
+- nonconstant `eta(r)` admits only annular/singular exact survivors `f(r)=a*sqrt(r)+b` in the `beta=r*theta` family
+- nonconstant `eta(r)` admits only annular/singular exact survivors `f(r)=a*log(r)+b` in the `beta=z` family
+- nonconstant `eta(r)` leaves only trivial constant survivors in the `alpha=r*theta, beta=g(z)` family
 - the earlier cylindrical bilinear case `alpha = r*theta`, `beta = r*z` becomes non-exact for `eta = eta(r)`
 
 ## Numerically Verified Toolkit Paths

@@ -105,6 +105,94 @@ def variable_eta_residual(alpha, beta, eta_expr):
     return sp.simplify(true - naive)
 
 
+def first_order_eta_perturbation_residual(alpha, beta, eta_background=None, eta_perturbation=None):
+    sp, r, theta, z, eta = cylindrical_symbols()
+    eps = sp.symbols("eps", real=True)
+    if eta_background is None:
+        eta_background = eta
+    if eta_perturbation is None:
+        eta_perturbation = sp.Function("eta1")(r)
+    residual = variable_eta_residual(alpha, beta, eta_background + eps * eta_perturbation)
+    coefficient = sp.diff(residual, eps).subs(eps, 0)
+    return sp.simplify(coefficient)
+
+
+def solve_variable_eta_radial_rtheta_family():
+    sp, r, theta, z, eta = cylindrical_symbols()
+    f = sp.Function("f")
+    eta_r = sp.Function("eta")(r)
+    residual = sp.simplify(variable_eta_residual(f(r), r * theta, eta_r))
+    ode = sp.Eq(2 * r * sp.diff(f(r), r, 2) + sp.diff(f(r), r), 0)
+    general_solution = sp.Eq(f(r), sp.Symbol("a", real=True) * sp.sqrt(r) + sp.Symbol("b", real=True))
+    return {
+        "family": "alpha=f(r), beta=r*theta",
+        "residual": residual,
+        "exactness_ode_when_eta_prime_nonzero": ode,
+        "general_solution_on_annulus": general_solution,
+        "regularity_note": "The sqrt(r) branch is non-smooth at r=0 and is only admissible on annular domains excluding the axis.",
+    }
+
+
+def solve_variable_eta_radial_z_family():
+    sp, r, theta, z, eta = cylindrical_symbols()
+    f = sp.Function("f")
+    eta_r = sp.Function("eta")(r)
+    residual = sp.simplify(variable_eta_residual(f(r), z, eta_r))
+    ode = sp.Eq(r * sp.diff(f(r), r, 2) + sp.diff(f(r), r), 0)
+    general_solution = sp.Eq(f(r), sp.Symbol("a", real=True) * sp.log(r) + sp.Symbol("b", real=True))
+    return {
+        "family": "alpha=f(r), beta=z",
+        "residual": residual,
+        "exactness_ode_when_eta_prime_nonzero": ode,
+        "general_solution_on_annulus": general_solution,
+        "regularity_note": "The log(r) branch is singular at r=0 and is only admissible on annular domains excluding the axis.",
+    }
+
+
+def solve_variable_eta_rtheta_gz_family():
+    sp, r, theta, z, eta = cylindrical_symbols()
+    g = sp.Function("g")
+    eta_r = sp.Function("eta")(r)
+    residual = sp.simplify(variable_eta_residual(r * theta, g(z), eta_r))
+    return {
+        "family": "alpha=r*theta, beta=g(z)",
+        "residual": residual,
+        "exactness_note": (
+            "If eta'(r) is nonzero on an interval, exactness forces g'(z)=0 and g''(z)=0, "
+            "so only trivial constant beta survives."
+        ),
+    }
+
+
+def build_variable_eta_classification_report() -> dict[str, Any]:
+    sp, r, theta, z, eta = cylindrical_symbols()
+    f = sp.Function("f")
+    g = sp.Function("g")
+    eta1 = sp.Function("eta1")(r)
+    return {
+        "first_order_obstructions": {
+            "alpha=f(r), beta=r*theta": str(first_order_eta_perturbation_residual(f(r), r * theta, eta, eta1).T),
+            "alpha=f(r), beta=z": str(first_order_eta_perturbation_residual(f(r), z, eta, eta1).T),
+            "alpha=r*theta, beta=g(z)": str(first_order_eta_perturbation_residual(r * theta, g(z), eta, eta1).T),
+        },
+        "annular_exact_families": {
+            "alpha=f(r), beta=r*theta": {
+                "residual": str(solve_variable_eta_radial_rtheta_family()["residual"].T),
+                "solution": "f(r) = a*sqrt(r) + b",
+            },
+            "alpha=f(r), beta=z": {
+                "residual": str(solve_variable_eta_radial_z_family()["residual"].T),
+                "solution": "f(r) = a*log(r) + b",
+            },
+        },
+        "trivial_only_family": solve_variable_eta_rtheta_gz_family()["exactness_note"],
+        "scope_note": (
+            "These positive variable-resistivity survivors are annular-domain families. "
+            "They do not restore smooth exact closure on domains touching the cylindrical axis."
+        ),
+    }
+
+
 def build_symbolic_report(max_power: int = 6) -> dict[str, Any]:
     sp, r, theta, z, eta = cylindrical_symbols()
     f = sp.Function("f")
@@ -149,6 +237,7 @@ def build_symbolic_report(max_power: int = 6) -> dict[str, Any]:
             "cubic_case_alpha=r**3_beta=theta": str(constant_eta_residual(r**3, theta).T),
             "variable_eta_alpha=r*theta_beta=r*z_eta=r": str(variable_eta_residual(r * theta, r * z, r).T),
         },
+        "variable_eta_classification": build_variable_eta_classification_report(),
     }
 
 

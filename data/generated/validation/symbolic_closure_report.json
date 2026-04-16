@@ -50,5 +50,24 @@
     "quadratic_case_alpha=r**2_beta=theta": "Matrix([[0, 0, 0]])",
     "cubic_case_alpha=r**3_beta=theta": "Matrix([[0, 0, -6*eta/r]])",
     "variable_eta_alpha=r*theta_beta=r*z_eta=r": "Matrix([[0, 3*theta, z/r]])"
+  },
+  "variable_eta_classification": {
+    "first_order_obstructions": {
+      "alpha=f(r), beta=r*theta": "Matrix([[0, 0, -(2*r*Derivative(f(r), (r, 2)) + Derivative(f(r), r))*Derivative(eta1(r), r)/r]])",
+      "alpha=f(r), beta=z": "Matrix([[0, 2*(r*Derivative(f(r), (r, 2)) + Derivative(f(r), r))*Derivative(eta1(r), r)/r, 0]])",
+      "alpha=r*theta, beta=g(z)": "Matrix([[0, 2*theta*Derivative(eta1(r), r)*Derivative(g(z), z)/r, 2*Derivative(eta1(r), r)*Derivative(g(z), (z, 2))]])"
+    },
+    "annular_exact_families": {
+      "alpha=f(r), beta=r*theta": {
+        "residual": "Matrix([[0, 0, -(2*r*Derivative(f(r), (r, 2)) + Derivative(f(r), r))*Derivative(eta(r), r)/r]])",
+        "solution": "f(r) = a*sqrt(r) + b"
+      },
+      "alpha=f(r), beta=z": {
+        "residual": "Matrix([[0, 2*(r*Derivative(f(r), (r, 2)) + Derivative(f(r), r))*Derivative(eta(r), r)/r, 0]])",
+        "solution": "f(r) = a*log(r) + b"
+      }
+    },
+    "trivial_only_family": "If eta'(r) is nonzero on an interval, exactness forces g'(z)=0 and g''(z)=0, so only trivial constant beta survives.",
+    "scope_note": "These positive variable-resistivity survivors are annular-domain families. They do not restore smooth exact closure on domains touching the cylindrical axis."
   }
 }

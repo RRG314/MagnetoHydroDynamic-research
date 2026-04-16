@@ -13,6 +13,16 @@ Examples from the symbolic report:
 
 Each acquires explicit residual terms proportional to `eta'(r)`.
 
+## Sharpened classification
+
+The obstruction is generic, but not absolute.
+
+- `alpha=f(r), beta=r*theta` has annular exact survivors `f(r)=a*sqrt(r)+b`
+- `alpha=f(r), beta=z` has annular exact survivors `f(r)=a*log(r)+b`
+- `alpha=r*theta, beta=g(z)` has only trivial constant-`g` survivors when `eta'(r)` is nonzero on an interval
+
+These are not smooth axis-touching exact families. They are restricted annular/singular survivors, and that distinction matters.
+
 ## Why this matters
 
 This is the point where the current exact-closure story stops scaling cleanly toward realistic resistivity profiles.

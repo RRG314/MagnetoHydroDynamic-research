@@ -4,7 +4,15 @@ import pytest
 
 sp = pytest.importorskip("sympy")
 
-from mhd_toolkit.research.symbolic_closures import build_symbolic_report, constant_eta_residual, variable_eta_residual
+from mhd_toolkit.research.symbolic_closures import (
+    build_symbolic_report,
+    build_variable_eta_classification_report,
+    constant_eta_residual,
+    first_order_eta_perturbation_residual,
+    solve_variable_eta_radial_rtheta_family,
+    solve_variable_eta_radial_z_family,
+    variable_eta_residual,
+)
 
 
 def test_constant_eta_exact_radial_rtheta_family() -> None:
@@ -37,3 +45,38 @@ def test_symbolic_report_marks_power_samples_exact() -> None:
     report = build_symbolic_report(max_power=4)
     samples = report["sample_checks"]["power_family_alpha=r**n_beta=r*theta"]
     assert all(item["exact"] for item in samples)
+
+
+def test_first_order_variable_eta_obstructions_match_exact_linearization() -> None:
+    r, theta, z, eta = sp.symbols("r theta z eta", real=True, positive=True)
+    eta1 = sp.Function("eta1")(r)
+    f = sp.Function("f")
+    exact = variable_eta_residual(f(r), r * theta, eta + eta1)
+    perturbative = first_order_eta_perturbation_residual(f(r), r * theta, eta, eta1)
+    assert sp.simplify(exact - perturbative) == sp.zeros(3, 1)
+
+
+def test_variable_eta_has_annular_exact_radial_rtheta_survivor() -> None:
+    r, theta, z = sp.symbols("r theta z", real=True, positive=True)
+    a, b = sp.symbols("a b", real=True)
+    eta_r = sp.Function("eta")(r)
+    residual = variable_eta_residual(a * sp.sqrt(r) + b, r * theta, eta_r)
+    assert sp.simplify(residual) == sp.zeros(3, 1)
+    summary = solve_variable_eta_radial_rtheta_family()
+    assert "sqrt(r)" in str(summary["general_solution_on_annulus"])
+
+
+def test_variable_eta_has_annular_exact_radial_z_survivor() -> None:
+    r, theta, z = sp.symbols("r theta z", real=True, positive=True)
+    a, b = sp.symbols("a b", real=True)
+    eta_r = sp.Function("eta")(r)
+    residual = variable_eta_residual(a * sp.log(r) + b, z, eta_r)
+    assert sp.simplify(residual) == sp.zeros(3, 1)
+    summary = solve_variable_eta_radial_z_family()
+    assert "log(r)" in str(summary["general_solution_on_annulus"])
+
+
+def test_variable_eta_classification_report_records_annular_survivors() -> None:
+    report = build_variable_eta_classification_report()
+    assert report["annular_exact_families"]["alpha=f(r), beta=r*theta"]["solution"] == "f(r) = a*sqrt(r) + b"
+    assert report["annular_exact_families"]["alpha=f(r), beta=z"]["solution"] == "f(r) = a*log(r) + b"
