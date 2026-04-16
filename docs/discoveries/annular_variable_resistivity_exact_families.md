@@ -60,3 +60,16 @@ This does not rescue the smooth variable-resistivity closure program.
 It sharpens it.
 
 What survives is not a broad smooth family but a narrow annular exact class. That is exactly the kind of restricted positive result worth keeping because it defines the true boundary instead of blurring it.
+
+## Smooth axis-touching consequence
+
+The same exact ODEs immediately force a sharper no-go on axis-touching domains for the supported radial families.
+
+- For `alpha=f(r)`, `beta=r*theta`, the exact solutions are `f(r)=a*sqrt(r)+b`.
+- For `alpha=f(r)`, `beta=z`, the exact solutions are `f(r)=a*log(r)+b`.
+
+So if we additionally require the family to be smooth up to the axis, the only survivors are the trivial constants.
+
+That means the current variable-resistivity picture is now genuinely two-sided:
+- annular domains admit narrow singular exact survivors
+- axis-touching smooth domains do not admit nonconstant survivors on these supported radial families

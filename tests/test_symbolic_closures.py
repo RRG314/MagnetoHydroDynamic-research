@@ -5,6 +5,7 @@ import pytest
 sp = pytest.importorskip("sympy")
 
 from mhd_toolkit.research.symbolic_closures import (
+    build_axis_touching_smooth_no_go_report,
     build_symbolic_report,
     build_variable_eta_classification_report,
     constant_eta_residual,
@@ -80,3 +81,17 @@ def test_variable_eta_classification_report_records_annular_survivors() -> None:
     report = build_variable_eta_classification_report()
     assert report["annular_exact_families"]["alpha=f(r), beta=r*theta"]["solution"] == "f(r) = a*sqrt(r) + b"
     assert report["annular_exact_families"]["alpha=f(r), beta=z"]["solution"] == "f(r) = a*log(r) + b"
+
+
+def test_nonconstant_polynomial_axis_touching_profiles_are_not_exact_under_variable_eta() -> None:
+    r, theta, z = sp.symbols("r theta z", real=True, positive=True)
+    eta_r = sp.Function("eta")(r)
+    for expr in (r, r**2, r**3):
+        assert sp.simplify(variable_eta_residual(expr, r * theta, eta_r)) != sp.zeros(3, 1)
+        assert sp.simplify(variable_eta_residual(expr, z, eta_r)) != sp.zeros(3, 1)
+
+
+def test_axis_touching_smooth_no_go_report_keeps_only_constants() -> None:
+    report = build_axis_touching_smooth_no_go_report()
+    assert report["families"]["alpha=f(r), beta=r*theta"]["smooth_axis_touching_survivors"] == "f(r) = b only"
+    assert report["families"]["alpha=f(r), beta=z"]["smooth_axis_touching_survivors"] == "f(r) = b only"

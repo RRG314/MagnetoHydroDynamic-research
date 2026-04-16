@@ -164,6 +164,33 @@ def solve_variable_eta_rtheta_gz_family():
     }
 
 
+def build_axis_touching_smooth_no_go_report() -> dict[str, Any]:
+    sp, r, theta, z, eta = cylindrical_symbols()
+    return {
+        "scope": (
+            "Supported cylindrical radial families with nonconstant eta(r) on an interval touching the axis."
+        ),
+        "families": {
+            "alpha=f(r), beta=r*theta": {
+                "exactness_ode": "2*r*f''(r) + f'(r) = 0",
+                "general_solution": "f(r) = a*sqrt(r) + b",
+                "smooth_axis_touching_survivors": "f(r) = b only",
+                "reason": "sqrt(r) is not C1 at r=0 unless the sqrt branch coefficient vanishes.",
+            },
+            "alpha=f(r), beta=z": {
+                "exactness_ode": "r*f''(r) + f'(r) = 0",
+                "general_solution": "f(r) = a*log(r) + b",
+                "smooth_axis_touching_survivors": "f(r) = b only",
+                "reason": "log(r) is singular at r=0 unless the logarithmic branch coefficient vanishes.",
+            },
+        },
+        "main_consequence": (
+            "Within these supported radial families, nonconstant eta(r) admits annular exact survivors "
+            "but no nonconstant smooth exact survivors on axis-touching domains."
+        ),
+    }
+
+
 def build_variable_eta_classification_report() -> dict[str, Any]:
     sp, r, theta, z, eta = cylindrical_symbols()
     f = sp.Function("f")
@@ -186,6 +213,7 @@ def build_variable_eta_classification_report() -> dict[str, Any]:
             },
         },
         "trivial_only_family": solve_variable_eta_rtheta_gz_family()["exactness_note"],
+        "axis_touching_smooth_no_go": build_axis_touching_smooth_no_go_report(),
         "scope_note": (
             "These positive variable-resistivity survivors are annular-domain families. "
             "They do not restore smooth exact closure on domains touching the cylindrical axis."

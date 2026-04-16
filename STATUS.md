@@ -13,6 +13,7 @@
 - nonconstant `eta(r)` admits only annular/singular exact survivors `f(r)=a*sqrt(r)+b` in the `beta=r*theta` family
 - nonconstant `eta(r)` admits only annular/singular exact survivors `f(r)=a*log(r)+b` in the `beta=z` family
 - nonconstant `eta(r)` leaves only trivial constant survivors in the `alpha=r*theta, beta=g(z)` family
+- on the supported radial families, nonconstant `eta(r)` leaves no nonconstant smooth exact survivors on axis-touching domains
 - the earlier cylindrical bilinear case `alpha = r*theta`, `beta = r*z` becomes non-exact for `eta = eta(r)`
 
 ## Numerically Verified Toolkit Paths
@@ -31,4 +32,5 @@
 
 - perturbative closure corrections for slowly varying resistivity
 - broader classification of exact cylindrical and toroidal families
+- whether the smooth-axis no-go extends to broader separable cylindrical families
 - whether useful numerical closure corrections can be built for realistic `eta(r)` profiles

@@ -10,5 +10,5 @@ python3 -m pytest tests/test_symbolic_closures.py
 Broader research/program checks:
 
 ```bash
-python3 scripts/validate/run_research_checks.py
+./scripts/validate/run_all.sh
 ```
