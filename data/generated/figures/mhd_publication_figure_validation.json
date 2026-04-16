@@ -1,0 +1,29 @@
+{
+  "all_passed": true,
+  "checks": {
+    "mhd_remainder_constant_vs_variable_eta": {
+      "png_exists": true,
+      "pdf_exists": true,
+      "png_bytes": 134396,
+      "pdf_bytes": 16742
+    },
+    "mhd_singularity_near_axis": {
+      "png_exists": true,
+      "pdf_exists": true,
+      "png_bytes": 164227,
+      "pdf_bytes": 16267
+    },
+    "mhd_sheet_thinning_scaling": {
+      "png_exists": true,
+      "pdf_exists": true,
+      "png_bytes": 209829,
+      "pdf_bytes": 19199
+    },
+    "mhd_axis_vs_annular_behavior": {
+      "png_exists": true,
+      "pdf_exists": true,
+      "png_bytes": 145271,
+      "pdf_bytes": 16983
+    }
+  }
+}
